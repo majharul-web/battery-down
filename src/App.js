@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <BatteryDown></BatteryDown>
+    </div>
+  );
+}
+
+function BatteryDown() {
+  const [number, setNumber] = useState("100");
+
+  const batteryDown = () => setNumber(number - 10);
+  return (
+    <div>
+      <p>battery status:{number}</p>
+      <button onClick={batteryDown} disabled={number === 0 ? true : false}>
+        battery down
+      </button>
     </div>
   );
 }
